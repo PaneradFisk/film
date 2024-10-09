@@ -23,7 +23,7 @@ def store_in_csv(movie_data):
             movie_data["user_rating"], 
             movie_data["first_time"]
         ])
-    print("Movie added successfully!")
+    print("movies.csv was updated")
 
 def get_imdb_data(imdb_url):
     response = requests.get(imdb_url)
@@ -35,24 +35,50 @@ def get_imdb_data(imdb_url):
     return title, year
 
 
-def update_year_markdown():
-    movies = []
+# def update_year_markdown():
+#     movies = []
 
+#     with open('movies.csv', newline='') as csv_file:
+#         reader = csv.reader(csv_file)
+#         for row in reader:
+#             timestamp, movie_name, movie_release_year, user_rating, first_time = row
+#             movies.append([timestamp, movie_name, movie_release_year, user_rating, first_time])
+
+#     with open('movies.md', 'w') as md_file:
+#         md_file.write("| # | Date of Watching | Title | Year of Release | My Rating | First Time? |\n")
+#         md_file.write("|---|------------------|-------|-----------------|-----------|-------------|\n")
+
+#         for index, movie in enumerate(movies, start=1):
+#             md_file.write(f"| {index} | {movie[0]} | {movie[1]} | {movie[2]} | {movie[3]} | {'X' if movie[4].lower() == 'yes' else ' '} |\n")
+
+#     print("movies.md was updated")
+def update_year_markdown():
+    movies_by_year = {}
+
+    # Read the CSV and group movies by the year they were watched
     with open('movies.csv', newline='') as csv_file:
         reader = csv.reader(csv_file)
         for row in reader:
             timestamp, movie_name, movie_release_year, user_rating, first_time = row
-            movies.append([timestamp, movie_name, movie_release_year, user_rating, first_time])
+            watch_year = datetime.strptime(timestamp, '%Y-%m-%d').year
 
-    with open('yearly_movies.md', 'w') as md_file:
-        md_file.write("| # | Date of Watching | Title | Year of Release | My Rating | First Time? |\n")
-        md_file.write("|---|------------------|-------|-----------------|-----------|-------------|\n")
+            if watch_year not in movies_by_year:
+                movies_by_year[watch_year] = []
 
-        for index, movie in enumerate(movies, start=1):
-            md_file.write(f"| {index} | {movie[0]} | {movie[1]} | {movie[2]} | {movie[3]} | {'X' if movie[4].lower() == 'yes' else ' '} |\n")
+            movies_by_year[watch_year].append([timestamp, movie_name, movie_release_year, user_rating, first_time])
 
-    print("yearly markdown file updated!")
+    # Create or update a markdown file for each year
+    for year, movies in movies_by_year.items():
+        filename = f'movies_{year}.md'
+        with open(filename, 'w') as md_file:
+            md_file.write(f"# Movies watched in {year}\n\n")
+            md_file.write("| # | Date of Watching | Title | Year of Release | My Rating | First Time? |\n")
+            md_file.write("|---|------------------|-------|-----------------|-----------|-------------|\n")
 
+            for index, movie in enumerate(movies, start=1):
+                md_file.write(f"| {index} | {movie[0]} | {movie[1]} | {movie[2]} | {movie[3]} | {'X' if movie[4].lower() == 'yes' else ' '} |\n")
+
+        print(f"{filename} was updated")
 
 def update_overview():
     movies_by_year = {}
@@ -90,7 +116,7 @@ def update_overview():
         }
 
     # Write the overview to markdown
-    with open('overview.md', 'w') as md_file:
+    with open('README.md', 'w') as md_file:
         md_file.write("| Year | Avg Rating | Avg Release Year | Median Release Year | Oldest | Newest | % First Time |\n")
         md_file.write("|------|------------|------------------|---------------------|--------|--------|--------------|\n")
 
@@ -98,7 +124,7 @@ def update_overview():
             md_file.write(f"| {year} | {stats['avg_rating']:.2f} | {stats['avg_release_year']:.0f} | {stats['median_release_year']} | "
                           f"{stats['oldest_release_year']} | {stats['newest_release_year']} | {stats['percent_first_time']:.2f}% |\n")
 
-    print("Overview markdown file updated!")
+    print("Overview(README.md) was updated")
 
 
 def main():
