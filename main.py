@@ -122,8 +122,8 @@ def update_overview():
 
         # Header for monthly breakdown
         md_file.write("\n## Monthly Breakdown\n")
-        md_file.write("| Year | Jan | Feb | March | April | May | June | July | Aug | Sept | Oct | Nov | Dec |\n")
-        md_file.write("|------|-----|-----|-------|-------|-----|------|------|-----|------|-----|-----|-----|\n")
+        md_file.write("| Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sept | Oct | Nov | Dec |\n")
+        md_file.write("|------|-----|-----|-----|-----|-----|-----|-----|-----|------|-----|-----|-----|\n")
 
         for year, months in monthly_breakdown.items():
             md_file.write(f"| {year} ")
