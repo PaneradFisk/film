@@ -35,24 +35,6 @@ def get_imdb_data(imdb_url):
     return title, year
 
 
-# def update_year_markdown():
-#     movies = []
-
-#     with open('movies.csv', newline='') as csv_file:
-#         reader = csv.reader(csv_file)
-#         for row in reader:
-#             timestamp, movie_name, movie_release_year, user_rating, first_time = row
-#             movies.append([timestamp, movie_name, movie_release_year, user_rating, first_time])
-
-#     with open('movies.md', 'w') as md_file:
-#         md_file.write("| # | Date of Watching | Title | Year of Release | My Rating | First Time? |\n")
-#         md_file.write("|---|------------------|-------|-----------------|-----------|-------------|\n")
-
-#         for index, movie in enumerate(movies, start=1):
-#             md_file.write(f"| {index} | {movie[0]} | {movie[1]} | {movie[2]} | {movie[3]} | {'X' if movie[4].lower() == 'yes' else ' '} |\n")
-
-#     print("movies.md was updated")
-
 def update_year_markdown():
     movies_by_year = {}
 
@@ -150,52 +132,6 @@ def update_overview():
             md_file.write("|\n")
 
     print("Overview (README.md) was updated")
-
-# def update_overview():
-#     movies_by_year = {}
-
-#     # Read the CSV data
-#     with open('movies.csv', newline='') as csvfile:
-#         reader = csv.reader(csvfile)
-#         for row in reader:
-#             timestamp, movie_name, movie_release_year, user_rating, first_time = row
-#             watch_year = datetime.strptime(timestamp, '%Y-%m-%d').year
-
-#             if watch_year not in movies_by_year:
-#                 movies_by_year[watch_year] = []
-
-#             movies_by_year[watch_year].append({
-#                 'release_year': int(movie_release_year),
-#                 'rating': float(user_rating),
-#                 'first_time': first_time.lower() == 'yes'
-#             })
-
-#     # Calculate summary statistics
-#     overview = {}
-#     for year, movies in movies_by_year.items():
-#         ratings = [movie['rating'] for movie in movies]
-#         release_years = [movie['release_year'] for movie in movies]
-#         first_time_count = sum(movie['first_time'] for movie in movies)
-
-#         overview[year] = {
-#             'avg_rating': sum(ratings) / len(ratings),
-#             'avg_release_year': sum(release_years) / len(release_years),
-#             'median_release_year': sorted(release_years)[len(release_years) // 2],
-#             'oldest_release_year': min(release_years),
-#             'newest_release_year': max(release_years),
-#             'percent_first_time': (first_time_count / len(movies)) * 100,
-#         }
-
-#     # Write the overview to markdown
-#     with open('README.md', 'w') as md_file:
-#         md_file.write("| Year | Avg Rating | Avg Release Year | Median Release Year | Oldest | Newest | % First Time |\n")
-#         md_file.write("|------|------------|------------------|---------------------|--------|--------|--------------|\n")
-
-#         for year, stats in overview.items():
-#             md_file.write(f"| {year} | {stats['avg_rating']:.2f} | {stats['avg_release_year']:.0f} | {stats['median_release_year']} | "
-#                           f"{stats['oldest_release_year']} | {stats['newest_release_year']} | {stats['percent_first_time']:.2f}% |\n")
-
-#     print("Overview(README.md) was updated")
 
 
 def main():
