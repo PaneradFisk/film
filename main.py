@@ -131,8 +131,8 @@ def update_overview():
     # Write the overview to markdown
     with open('README.md', 'w') as md_file:
         # Header for main statistics
-        md_file.write("| Year | Avg Rating | Avg Release Year | Median Release Year | Oldest | Newest | % First Time | Total Movies |\n")
-        md_file.write("|------|------------|------------------|---------------------|--------|--------|--------------|--------------|\n")
+        md_file.write("| Year | Avg Rating | Avg | Median | Oldest | Newest | % First Time | # Movies |\n")
+        md_file.write("|------|------------|-----|--------|--------|--------|--------------|----------|\n")
 
         for year, stats in overview.items():
             md_file.write(f"| {year} | {stats['avg_rating']:.2f} | {stats['avg_release_year']:.0f} | {stats['median_release_year']} | "
@@ -140,8 +140,8 @@ def update_overview():
 
         # Header for monthly breakdown
         md_file.write("\n## Monthly Breakdown\n")
-        md_file.write("| Year | January | February | March | April | May | June | July | August | September | October | November | December |\n")
-        md_file.write("|------|---------|----------|-------|-------|-----|------|------|--------|-----------|---------|----------|----------|\n")
+        md_file.write("| Year | Jan | Feb | March | April | May | June | July | Aug | Sept | Oct | Nov | Dec |\n")
+        md_file.write("|------|-----|-----|-------|-------|-----|------|------|-----|------|-----|-----|-----|\n")
 
         for year, months in monthly_breakdown.items():
             md_file.write(f"| {year} ")
