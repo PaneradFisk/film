@@ -58,3 +58,4 @@
 | 54 | 2024-09-08 | The NeverEnding Story II: The Next Chapter | 1990 | 5 | X |
 | 55 | 2024-09-11 | Limitless | 2011 | 8 |   |
 | 56 | 2024-09-17 | Fury | 2014 | 7 |   |
+| 57 | 2024-10-10 | The Boy and The Heron | 2023 | 7.5 | X |
