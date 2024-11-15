@@ -65,3 +65,4 @@
 | 61 | 2024-10-17 | A Knights Tale | 2001 | 7.5 |   |
 | 62 | 2024-11-09 | The Devil's Advocate | 1997 | 6.0 | X |
 | 63 | 2024-11-12 | Gladiator 2 | 2024 | 6.5 | X |
+| 64 | 2024-11-15 | The Little Mermaid | 2023 | 4.5 | X |
