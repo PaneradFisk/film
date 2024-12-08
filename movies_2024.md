@@ -73,3 +73,4 @@
 | 69 | 2024-12-06 | Act of Valor | 2012 | 5 | X |
 | 70 | 2024-12-07 | V for Vendetta | 2006 | 7.5 |   |
 | 71 | 2024-12-08 | Knights of the Zodiac | 2023 | 4.0 | X |
+| 72 | 2024-12-08 | The Shawshank Redemption | 1994 | 9.0 |   |
