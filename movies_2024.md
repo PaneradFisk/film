@@ -75,3 +75,4 @@
 | 71 | 2024-12-08 | Knights of the Zodiac | 2023 | 4.0 | X |
 | 72 | 2024-12-08 | The Shawshank Redemption | 1994 | 9.0 |   |
 | 73 | 2024-12-10 | Demolition | 2016 | 7.5 |   |
+| 74 | 2024-12-11 | Dune: Part One | 2021 | 7.5 |   |
