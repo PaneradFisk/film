@@ -76,3 +76,4 @@
 | 72 | 2024-12-08 | The Shawshank Redemption | 1994 | 9.0 |   |
 | 73 | 2024-12-10 | Demolition | 2016 | 7.5 |   |
 | 74 | 2024-12-11 | Dune: Part One | 2021 | 7.5 |   |
+| 75 | 2024-12-13 | Deep Impact | 1998 | 6.5 | X |
